@@ -89,4 +89,48 @@ fun main() {
     val numbers = arrayOf(2, -3, 5, 0)
     val signs = getAllNumberSigns(numbers)
     println(signs.joinToString())
+
+
+    /*
+    * [HIGHER-ORDER FUNCTIONS]
+    * Implement a function `convertToCaps`
+    - arg : String
+    - returns : String converted to capital letters
+    * */
+    fun convertToCaps(word: String): String {
+        return word.uppercase()
+    }
+    val capital = convertToCaps("It is a new day")
+    println(capital)
+
+    /*
+    * [HIGHER-ORDER FUNCTIONS]
+    * Implement a function `exclaim`
+    - arg : String
+    - returns : given String with an exclamation mark at the end
+    * */
+    fun exclaim(word: String): String {
+        return "$word!"
+    }
+    val exclamation = exclaim("Welcome home")
+    println(exclamation)
+
+    /*
+    * [HIGHER-ORDER FUNCTIONS]
+    * Implement a function greetWith
+    * */
+    // 2 args : String + Function that transforms string given
+    fun greetWith(name: String, transformation: (String) -> String): String {
+        return transformation(name)
+    }
+
+    // semicolon used when referencing a function
+    println(greetWith("Marco", ::convertToCaps))
+    println(greetWith("Marco", ::exclaim))
+
+    /*
+    * - call previous function greetWith using a lambda instead of a named function
+    * */
+    println(greetWith("Marco") { it.uppercase() })
+    println(greetWith("Marco") { "$it!" })
 }
