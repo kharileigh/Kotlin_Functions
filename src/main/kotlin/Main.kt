@@ -67,7 +67,13 @@ fun main() {
     - prints a hello message
     - use `map` function
     * */
-
+    fun printHelloMessages(names: List<String>) {
+        // map : transforms each name to a message
+        names.map { name -> "Hello $name!" }
+            // forEach : used to print each message
+            .forEach { message -> println(message) }
+    }
+    println(printHelloMessages(listOf("Jake", "Olga", "Pat")))
 
     /*
     * [DATA STRUCTURES]
@@ -76,4 +82,11 @@ fun main() {
     - returns array of corresponding number signs
     - use `map` function
     * */
+    fun getAllNumberSigns(numbers: Array<Int>): Array<String?> {
+        // map produces a List of strings, then it is converted to an Array
+        return numbers.map { getNumberSign(it) }.toTypedArray()
+    }
+    val numbers = arrayOf(2, -3, 5, 0)
+    val signs = getAllNumberSigns(numbers)
+    println(signs.joinToString())
 }
